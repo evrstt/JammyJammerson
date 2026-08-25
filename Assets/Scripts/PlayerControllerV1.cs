@@ -3,8 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerControllerV1 : MonoBehaviour
 {
+[Header("Movement")]
 [SerializeField] private float moveSpeed = 10f;
+[SerializeField] private float jumpForce = 14f;
 
+[Header("References")]
 [SerializeField] private Transform groundCheck;
 [SerializeField] private float groundCheckRadius = 0.2f;
 [SerializeField] private LayerMask groundLayer;
@@ -32,5 +35,13 @@ private bool isGrounded;
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
+    }
+
+    public void OnJump(InputValue value)
+    {
+        if(value.isPressed && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
     }
 }
