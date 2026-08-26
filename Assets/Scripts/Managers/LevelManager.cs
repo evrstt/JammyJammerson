@@ -31,5 +31,7 @@ public class LevelManager : MonoBehaviour
         isLevelComplete = true;
 
         Debug.Log("Level Complete!");
+
+        SceneLoader.Instance.LoadNextLevel();
     }
 }
