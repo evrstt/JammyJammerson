@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ public class PlayerControllerV1 : MonoBehaviour
 [SerializeField] private float fallForce = 20f;
 [SerializeField] private float jumpCutMultiplier = 0.5f;
 [SerializeField] private float coyoteTime = 0.1f;
+[SerializeField] private float jumpBufferTime = 0.1f;
 
 [Header("References")]
 [SerializeField] private Transform groundCheck;
@@ -20,6 +22,7 @@ private Rigidbody2D rb;
 private Vector2 moveInput;
 private bool isGrounded;
 private float coyoteTimeCounter;
+private float jumpBufferCounter;
 
     private void Awake()
     {
@@ -37,6 +40,16 @@ private float coyoteTimeCounter;
         else
         {
             coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        jumpBufferCounter -= Time.deltaTime;
+
+        if(jumpBufferCounter > 0 && coyoteTimeCounter > 0)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+            jumpBufferCounter = 0;
+            coyoteTimeCounter = 0;
         }
     }
 
@@ -57,9 +70,9 @@ private float coyoteTimeCounter;
 
     public void OnJump(InputValue value)
     {
-        if(value.isPressed && coyoteTimeCounter > 0)
+        if(value.isPressed)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            jumpBufferCounter = jumpBufferTime;
         }
         else if(!value.isPressed && rb.linearVelocity.y > 0)
         {
