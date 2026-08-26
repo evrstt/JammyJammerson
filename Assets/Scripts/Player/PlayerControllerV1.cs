@@ -7,6 +7,7 @@ public class PlayerControllerV1 : MonoBehaviour
 [SerializeField] private float moveSpeed = 10f;
 [SerializeField] private float jumpForce = 14f;
 [SerializeField] private float fallForce = 20f;
+[SerializeField] private float jumpCutMultiplier = 0.5f;
 
 [Header("References")]
 [SerializeField] private Transform groundCheck;
@@ -48,6 +49,10 @@ private bool isGrounded;
         if(value.isPressed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+        else if(!value.isPressed && rb.linearVelocity.y > 0)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
         }
     }
 }
