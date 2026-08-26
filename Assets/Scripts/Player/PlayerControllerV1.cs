@@ -11,6 +11,8 @@ public class PlayerControllerV1 : MonoBehaviour
 [SerializeField] private float jumpCutMultiplier = 0.5f;
 [SerializeField] private float coyoteTime = 0.1f;
 [SerializeField] private float jumpBufferTime = 0.1f;
+[SerializeField] private float acceleration = 120f;
+[SerializeField] private float deceleration = 150f;
 
 [Header("References")]
 [SerializeField] private Transform groundCheck;
@@ -55,7 +57,20 @@ private float jumpBufferCounter;
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        float targetSpeed = moveInput.x * moveSpeed;
+        float accelerationRate;
+
+        if(moveInput.x != 0)
+        {
+            accelerationRate = acceleration;
+        }
+        else
+        {
+            accelerationRate = deceleration;
+        }
+
+        float newXVelocity = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accelerationRate * Time.fixedDeltaTime);
+        rb.linearVelocity = new Vector2(newXVelocity, rb.linearVelocity.y);
 
         if(rb.linearVelocity.y < 0)
         {
