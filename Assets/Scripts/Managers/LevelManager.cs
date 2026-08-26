@@ -2,10 +2,21 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-[SerializeField] private Transform spawnPoint;
+[SerializeField] private Transform startingSpawnPoint;
+private Transform currentSpawnPoint;
 
-public Vector3 GetSpawnPosition()
+    private void Awake()
     {
-        return spawnPoint.position;
+        currentSpawnPoint = startingSpawnPoint;
+    }
+
+    public Vector3 GetSpawnPosition()
+    {
+        return currentSpawnPoint.position;
+    }
+
+    public void SetCheckpoint(Transform checkpoint)
+    {
+        currentSpawnPoint = checkpoint;
     }
 }
