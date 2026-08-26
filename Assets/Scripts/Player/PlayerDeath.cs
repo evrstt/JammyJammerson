@@ -13,6 +13,10 @@ private LevelManager levelManager;
 
     public void Die()
     {
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.RegisterDeath();
+        }
         Respawn();
     }
 
