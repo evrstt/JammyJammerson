@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-[SerializeField] private Transform startingSpawnPoint;
-private Transform currentSpawnPoint;
+    [SerializeField] private Transform startingSpawnPoint;
+    private Transform currentSpawnPoint;
+    private bool isLevelComplete;
 
     private void Awake()
     {
@@ -18,5 +19,17 @@ private Transform currentSpawnPoint;
     public void SetCheckpoint(Transform checkpoint)
     {
         currentSpawnPoint = checkpoint;
+    }
+
+    public void CompleteLevel()
+    {
+        if(isLevelComplete)
+        {
+            return;
+        }
+
+        isLevelComplete = true;
+
+        Debug.Log("Level Complete!");
     }
 }
