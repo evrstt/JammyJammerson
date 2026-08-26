@@ -6,6 +6,7 @@ public class PlayerControllerV1 : MonoBehaviour
 [Header("Movement")]
 [SerializeField] private float moveSpeed = 10f;
 [SerializeField] private float jumpForce = 14f;
+[SerializeField] private float fallForce = 20f;
 
 [Header("References")]
 [SerializeField] private Transform groundCheck;
@@ -30,6 +31,11 @@ private bool isGrounded;
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+
+        if(rb.linearVelocity.y < 0)
+        {
+            rb.AddForce(Vector2.down * fallForce);
+        }
     }
 
     public void OnMove(InputValue value)
