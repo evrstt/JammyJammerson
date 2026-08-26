@@ -1431,6 +1431,11 @@ MonoBehaviour:
   jumpForce: 14
   fallForce: 20
   jumpCutMultiplier: 0.5
+  coyoteTime: 0.1
+  jumpBufferTime: 0.1
+  acceleration: 120
+  deceleration: 150
+  maxFallSpeed: 30
   groundCheck: {fileID: 1061414263}
   groundCheckRadius: 0.2
   groundLayer:

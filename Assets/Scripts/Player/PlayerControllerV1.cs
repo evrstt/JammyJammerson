@@ -13,6 +13,7 @@ public class PlayerControllerV1 : MonoBehaviour
 [SerializeField] private float jumpBufferTime = 0.1f;
 [SerializeField] private float acceleration = 120f;
 [SerializeField] private float deceleration = 150f;
+[SerializeField] private float maxFallSpeed = 25f;
 
 [Header("References")]
 [SerializeField] private Transform groundCheck;
@@ -75,6 +76,11 @@ private float jumpBufferCounter;
         if(rb.linearVelocity.y < 0)
         {
             rb.AddForce(Vector2.down * fallForce);
+        }
+
+        if(rb.linearVelocity.y < -maxFallSpeed)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -maxFallSpeed);
         }
     }
 
