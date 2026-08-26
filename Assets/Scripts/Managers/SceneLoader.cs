@@ -19,6 +19,9 @@ public class SceneLoader : MonoBehaviour
 
     private bool nextLevelLoaded;
 
+    private bool isTransitioning;
+    private bool isPreloadingNextLevel;
+
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -46,13 +49,7 @@ public class SceneLoader : MonoBehaviour
         currentLevelScene = SceneManager.GetSceneByName(levelSceneNames[currentLevelIndex]);
         currentLevelRoot = GetLevelRoot(currentLevelScene);
 
-        if(currentLevelIndex + 1 < levelSceneNames.Length)
-        {
-            yield return LoadLevel(levelSceneNames[currentLevelIndex +1]);
-            nextLevelScene = SceneManager.GetSceneByName(levelSceneNames[currentLevelIndex + 1]);
-            nextLevelRoot = GetLevelRoot(nextLevelScene);
-            nextLevelLoaded = true;
-        }
+        yield return StartCoroutine(PreloadNextLevel());
 
         currentLevelRoot.SetActive(true);
         SceneManager.SetActiveScene(currentLevelScene);
@@ -76,38 +73,67 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        if(isTransitioning)
+        {
+            return;
+        }
+
         StartCoroutine(TransitionToNextLevel());
     }
 
     private IEnumerator TransitionToNextLevel()
     {
-        if(!nextLevelLoaded)
+        if(currentLevelIndex + 1 >= levelSceneNames.Length)
         {
+            Debug.Log("No more Levels, Game Complete");
+            yield break;
+        }
+
+        isTransitioning = true;
+
+        if(!nextLevelLoaded && !isPreloadingNextLevel)
+        {
+            yield return StartCoroutine(PreloadNextLevel());
+        }
+
+        while(isPreloadingNextLevel)
+        {
+            yield return null;
+        }
+
+        if(!nextLevelLoaded || nextLevelRoot == null)
+        {
+            Debug.LogError("Next level failed to preload.");
+            isTransitioning = false;
             yield break;
         }
 
         currentLevelRoot.SetActive(false);
         nextLevelRoot.SetActive(true);
+
         SceneManager.SetActiveScene(nextLevelScene);
+
         Scene previousScene = currentLevelScene;
 
         currentLevelIndex++;
-        
+
         currentLevelScene = nextLevelScene;
         currentLevelRoot = nextLevelRoot;
 
         nextLevelLoaded = false;
+        nextLevelScene = default;
+        nextLevelRoot = null;
 
-        SceneManager.UnloadSceneAsync(previousScene);
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(previousScene);
 
-        if(currentLevelIndex + 1 < levelSceneNames.Length)
+        while(unloadOperation != null && !unloadOperation.isDone)
         {
-            yield return LoadLevel(levelSceneNames[currentLevelIndex +1]);
-            nextLevelScene = SceneManager.GetSceneByName(levelSceneNames[currentLevelIndex +1]);
-
-            nextLevelRoot = GetLevelRoot(nextLevelScene);
-            nextLevelLoaded = true;
+            yield return null;
         }
+
+        StartCoroutine(PreloadNextLevel());
+
+        isTransitioning = false;
     }
 
     private GameObject GetLevelRoot(Scene scene)
@@ -123,5 +149,28 @@ public class SceneLoader : MonoBehaviour
         }
 
         return null;
+    }
+
+    private IEnumerator PreloadNextLevel()
+    {
+        if(currentLevelIndex + 1 >= levelSceneNames.Length)
+        {
+            nextLevelLoaded = false;
+            nextLevelScene = default;
+            nextLevelRoot = null;
+            yield break;
+        }
+
+        isPreloadingNextLevel = true;
+
+        string nextSceneName = levelSceneNames[currentLevelIndex +1];
+
+        yield return LoadLevel(nextSceneName);
+
+        nextLevelScene = SceneManager.GetSceneByName(nextSceneName);
+        nextLevelRoot = GetLevelRoot(nextLevelScene);
+
+        nextLevelLoaded = true;
+        isPreloadingNextLevel = false;
     }
 }
