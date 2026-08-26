@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-private Rigidbody2D rb;
-private LevelManager levelManager;
+    [SerializeField] private AudioClip deathSound;
+    private Rigidbody2D rb;
+    private LevelManager levelManager;
 
     private void Awake()
     {
@@ -16,6 +17,11 @@ private LevelManager levelManager;
         if(GameManager.Instance != null)
         {
             GameManager.Instance.RegisterDeath();
+        }
+
+        if(AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySFX(deathSound);
         }
         Respawn();
     }
