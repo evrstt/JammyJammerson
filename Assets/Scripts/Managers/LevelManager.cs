@@ -4,7 +4,6 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Transform startingSpawnPoint;
     private Transform currentSpawnPoint;
-    private bool isLevelComplete;
 
     private void Awake()
     {
@@ -19,19 +18,5 @@ public class LevelManager : MonoBehaviour
     public void SetCheckpoint(Transform checkpoint)
     {
         currentSpawnPoint = checkpoint;
-    }
-
-    public void CompleteLevel()
-    {
-        if(isLevelComplete)
-        {
-            return;
-        }
-
-        isLevelComplete = true;
-
-        Debug.Log("Level Complete!");
-
-        SceneLoader.Instance.LoadNextLevel();
     }
 }
