@@ -5,20 +5,28 @@ public class PauseMenuUI : MonoBehaviour
     [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private GameObject settingsPanel;
 
-    private void OnEnable()
+    private void Awake()
     {
-        GameManager.Instance.PauseStateChanged += OnPauseStateChanged;
-    }
+        DontDestroyOnLoad(gameObject);
 
-    private void OnDisable()
-    {
-        GameManager.Instance.PauseStateChanged -= OnPauseStateChanged;
+        pauseMenuPanel.SetActive(false);
+        settingsPanel.SetActive(false);   
     }
 
     private void Start()
     {
-        pauseMenuPanel.SetActive(false);
-        settingsPanel.SetActive(false);
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.PauseStateChanged += OnPauseStateChanged;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.PauseStateChanged -= OnPauseStateChanged;
+        }
     }
 
     private void OnPauseStateChanged(bool isPaused)

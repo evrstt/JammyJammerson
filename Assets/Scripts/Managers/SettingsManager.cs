@@ -45,7 +45,7 @@ public class SettingsManager : MonoBehaviour
     {
         MusicVolume = volume;
 
-        AudioManager.instance.SetMasterVolume(volume);
+        AudioManager.instance.SetMusicVolume(volume);
 
         PlayerPrefs.SetFloat(MusicVolumeKey, volume);
         PlayerPrefs.Save();
