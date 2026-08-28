@@ -229,6 +229,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  jumpSound: {fileID: 8300000, guid: 63163cea7a3dbef4d981440303c28fe5, type: 3}
+  rocketBoostSound: {fileID: 8300000, guid: 39a897087a5e12a47ad4397fad6375a3, type: 3}
+  rocketBoostSource: {fileID: 7107677446965547935}
 --- !u!114 &1819083115200240928
 MonoBehaviour:
   m_ObjectHideFlags: 0

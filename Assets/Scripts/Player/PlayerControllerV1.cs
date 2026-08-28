@@ -20,6 +20,10 @@ public class PlayerControllerV1 : MonoBehaviour
 [SerializeField] private float groundCheckRadius = 0.2f;
 [SerializeField] private LayerMask groundLayer;
 
+[SerializeField] private AudioClip jumpSound;
+[SerializeField] private AudioClip rocketBoostSound;
+[SerializeField] private AudioSource rocketBoostSource;
+
 private Rigidbody2D rb;
 
 private Vector2 moveInput;
@@ -29,6 +33,9 @@ private float jumpBufferCounter;
 
     private void Awake()
     {
+        rocketBoostSource.clip = rocketBoostSound;
+        rocketBoostSource.loop = true;
+
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -51,8 +58,23 @@ private float jumpBufferCounter;
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
 
+            if(AudioManager.instance != null && jumpSound != null)
+            {
+                AudioManager.instance.PlaySFX(jumpSound);
+            }
+
+            if(rocketBoostSource != null)
+            {
+                rocketBoostSource.Play();
+            }
+
             jumpBufferCounter = 0;
             coyoteTimeCounter = 0;
+        }
+
+        if(rocketBoostSource != null && rb.linearVelocity.y <= 0 && rocketBoostSource.isPlaying)
+        {
+            rocketBoostSource.Stop();
         }
     }
 
@@ -98,6 +120,19 @@ private float jumpBufferCounter;
         else if(!value.isPressed && rb.linearVelocity.y > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
+
+            if(rocketBoostSource.isPlaying)
+            {
+                rocketBoostSource.Stop();
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        if(rocketBoostSource != null && rocketBoostSource.isPlaying)
+        {
+            rocketBoostSource.Stop();
         }
     }
 }
