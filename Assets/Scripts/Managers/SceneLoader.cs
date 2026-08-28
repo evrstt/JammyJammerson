@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,8 +24,16 @@ public class SceneLoader : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
+    public void StartGame()
     {
+        SceneManager.LoadScene("LoadingScreen");
+        StartCoroutine(LoadStartingRoom());
+    }
+
+    private IEnumerator LoadStartingRoom()
+    {
+        yield return null;
+
         LoadRoom(startingRoomScene, startingSpawnID);
     }
 
