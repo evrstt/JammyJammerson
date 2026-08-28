@@ -17,6 +17,7 @@ public class SettingsMenuUI : MonoBehaviour
 
     private PreviousMenu previousMenu;
 
+
     private void OnEnable()
     {
         if(SettingsManager.Instance == null)

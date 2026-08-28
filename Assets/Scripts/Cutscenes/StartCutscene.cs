@@ -18,6 +18,9 @@ public class StartCutscene : MonoBehaviour
     [SerializeField] private float typingSpeed = 0.03f;
     [SerializeField] private float walkSpeed = 5f;
 
+    [SerializeField] private AudioClip introMusic;
+    [SerializeField] private AudioClip gameplayMusic;
+
     private void Start()
     {
         StartCoroutine(PlayCutscene());
@@ -25,6 +28,8 @@ public class StartCutscene : MonoBehaviour
 
     private IEnumerator PlayCutscene()
     {
+        AudioManager.instance.PlayMusicSequence(introMusic, gameplayMusic);
+
         playerController.enabled = false;
         playerRb.linearVelocity = Vector2.zero;
 
@@ -56,9 +61,9 @@ public class StartCutscene : MonoBehaviour
             elapsedTime += Time.deltaTime;
 
             blackFade.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
-        }
 
-        yield return null;
+            yield return null;
+        }
     }
 
     private IEnumerator TypeDialogue(string dialogue)
