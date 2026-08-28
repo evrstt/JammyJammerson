@@ -8,6 +8,11 @@ public class MainMenuUI : MonoBehaviour
     public void PlayGame()
     {
         mainMenuPanel.SetActive(false);
+
+        if(AudioManager.instance != null)
+        {
+            AudioManager.instance.StopMusic();
+        }
         SceneLoader.Instance.StartGame();
     }
 
