@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -9,6 +10,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
+
+    private Coroutine musicSequenceCoroutine;
 
     private void Awake()
     {
@@ -30,12 +33,51 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        if(musicSequenceCoroutine != null)
+        {
+            StopCoroutine(musicSequenceCoroutine);
+            musicSequenceCoroutine = null;
+        }
+
         musicSource.clip = musicClip;
+        musicSource.loop = true;
+        musicSource.Play();
+    }
+
+    public void PlayMusicSequence(AudioClip introClip, AudioClip loopClip)
+    {
+        if(musicSequenceCoroutine != null)
+        {
+            StopCoroutine(musicSequenceCoroutine);
+        }
+
+        musicSequenceCoroutine = StartCoroutine(PlayMusicSequenceRoutine(introClip, loopClip));
+    }
+
+    private IEnumerator PlayMusicSequenceRoutine(AudioClip introClip, AudioClip loopClip)
+    {
+        musicSource.loop = false;
+        musicSource.clip = introClip;
+        musicSource.Play();
+
+        while(musicSource.isPlaying)
+        {
+            yield return null;
+        }
+
+        musicSource.clip = loopClip;
+        musicSource.loop = true;
         musicSource.Play();
     }
 
     public void StopMusic()
     {
+        if(musicSequenceCoroutine != null)
+        {
+            StopCoroutine(musicSequenceCoroutine);
+            musicSequenceCoroutine = null;
+        }
+
         musicSource.Stop();
     }
 

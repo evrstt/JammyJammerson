@@ -7,7 +7,7 @@ public class PauseMenuUI : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        
 
         pauseMenuPanel.SetActive(false);
         settingsPanel.SetActive(false);   
@@ -31,10 +31,14 @@ public class PauseMenuUI : MonoBehaviour
 
     private void OnPauseStateChanged(bool isPaused)
     {
-        pauseMenuPanel.SetActive(isPaused);
-
-        if(!isPaused)
+        if(isPaused)
         {
+            pauseMenuPanel.SetActive(true);
+            settingsPanel.SetActive(false);
+        }
+        else
+        {
+            pauseMenuPanel.SetActive(false);
             settingsPanel.SetActive(false);
         }
     }
@@ -42,17 +46,5 @@ public class PauseMenuUI : MonoBehaviour
     public void ResumeGame()
     {
         GameManager.Instance.ResumeGame();
-    }
-
-    public void OpenSettings()
-    {
-        pauseMenuPanel.SetActive(false);
-        settingsPanel.SetActive(true);
-    }
-
-    public void CloseSettings()
-    {
-        settingsPanel.SetActive(false);
-        pauseMenuPanel.SetActive(true);
     }
 }

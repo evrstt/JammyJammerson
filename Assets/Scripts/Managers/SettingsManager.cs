@@ -29,6 +29,11 @@ public class SettingsManager : MonoBehaviour
     private void Start()
     {
         ApplyAudioSettings();
+
+        Debug.Log("Master Volume: " + MasterVolume);
+        Debug.Log("Music Volume: " + MusicVolume);
+        Debug.Log("SFX Volume: " + SFXVolume);
+
     }
 
     public void SetMasterVolume(float volume)
