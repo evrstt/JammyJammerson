@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632f3a9cecba9614eb5e7c299472773e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
-  startingRoomScene: TestScene01
+  startingRoomScene: Floor1-1
   startingSpawnID: LeftEntrance
 --- !u!4 &955292219
 Transform:
