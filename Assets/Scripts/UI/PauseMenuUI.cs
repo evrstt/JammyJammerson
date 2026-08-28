@@ -7,7 +7,7 @@ public class PauseMenuUI : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        
 
         pauseMenuPanel.SetActive(false);
         settingsPanel.SetActive(false);   

@@ -17,6 +17,7 @@ public class SceneLoader : MonoBehaviour
         if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
 
         Instance = this;
@@ -35,6 +36,11 @@ public class SceneLoader : MonoBehaviour
         yield return null;
 
         LoadRoom(startingRoomScene, startingSpawnID);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void LoadRoom(string sceneName, string spawnID)
