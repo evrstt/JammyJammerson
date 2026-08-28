@@ -2,27 +2,24 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private Transform[] points;
-    [SerializeField] private int startingPoint;
-    private int pointIndex;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private Transform pointA;
+    [SerializeField] private Transform pointB;
+
+    private Vector3 nextPosition;
     
     void Start()
     {
-        transform.position = points[startingPoint].position;
+        nextPosition = pointB.position;
     }
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, points[pointIndex].position) < 0.02f)
-        {
-            pointIndex++;
-            if (pointIndex == points.Length)
-            {
-                pointIndex = 0;
-            }
-        }
+        transform.position = Vector3.MoveTowards(transform.position, nextPosition, speed * Time.deltaTime);
 
-        transform.position = Vector2.MoveTowards(transform.position, points[pointIndex].position, speed * Time.deltaTime);
+        if(transform.position == nextPosition)
+        {
+            nextPosition = (nextPosition == pointA.position) ? pointB.position : pointA.position;
+        }
     }
 }
