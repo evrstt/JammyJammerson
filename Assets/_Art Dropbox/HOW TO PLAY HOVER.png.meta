@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: dafc9c15df8197c46a33757edd114aca
+guid: a06eabc6e11153944a5b37bf1896e00b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8179574137410412297
-    second: Background #2_0
+      213: 8627291477853328180
+    second: HOW TO PLAY HOVER_0
+  - first:
+      213: -8198149828593800452
+    second: HOW TO PLAY HOVER_1
+  - first:
+      213: 8063191864403158926
+    second: HOW TO PLAY HOVER_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background #2_0
+      name: HOW TO PLAY HOVER_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        y: 143
+        width: 230
+        height: 146
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +147,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f02ea5c8a05c7e80800000000000000
-      internalID: -8179574137410412297
+      spriteID: 433d337c3eb4ab770800000000000000
+      internalID: 8627291477853328180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOW TO PLAY HOVER_1
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 158
+        width: 163
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfaac33aa225a3e80800000000000000
+      internalID: -8198149828593800452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOW TO PLAY HOVER_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 0
+        width: 298
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e87e191b74636ef60800000000000000
+      internalID: 8063191864403158926
       vertices: []
       indices: 
       edges: []
@@ -161,7 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Background #2_0: -8179574137410412297
+      HOW TO PLAY HOVER_0: 8627291477853328180
+      HOW TO PLAY HOVER_1: -8198149828593800452
+      HOW TO PLAY HOVER_2: 8063191864403158926
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

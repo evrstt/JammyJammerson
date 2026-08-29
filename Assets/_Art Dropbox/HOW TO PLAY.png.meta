@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: dafc9c15df8197c46a33757edd114aca
+guid: 924f08bf353a0fb47aacec411f023612
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8179574137410412297
-    second: Background #2_0
+      213: -8973921884926399412
+    second: HOW TO PLAY_0
+  - first:
+      213: -1040133269253890514
+    second: HOW TO PLAY_1
+  - first:
+      213: -8958781336445638460
+    second: HOW TO PLAY_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background #2_0
+      name: HOW TO PLAY_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        y: 143
+        width: 230
+        height: 146
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +147,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f02ea5c8a05c7e80800000000000000
-      internalID: -8179574137410412297
+      spriteID: c4cabde6799367380800000000000000
+      internalID: -8973921884926399412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOW TO PLAY_1
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 158
+        width: 163
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2e5e0f6d44b091f0800000000000000
+      internalID: -1040133269253890514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOW TO PLAY_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 0
+        width: 298
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c822c417d30ca380800000000000000
+      internalID: -8958781336445638460
       vertices: []
       indices: 
       edges: []
@@ -161,7 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Background #2_0: -8179574137410412297
+      HOW TO PLAY_0: -8973921884926399412
+      HOW TO PLAY_1: -1040133269253890514
+      HOW TO PLAY_2: -8958781336445638460
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
