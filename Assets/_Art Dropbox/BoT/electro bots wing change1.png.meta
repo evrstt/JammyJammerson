@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: bd00314166d94094d85c807f17a6de26
+guid: 8a4fe0253f57fb64fa21d75eb36c2402
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8538565723335833694
-    second: electro pillar i  2_0
-  - first:
-      213: -5378965896142231783
-    second: electro pillar i  2_1
+      213: 7848008493909821491
+    second: electro bots wing change1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,45 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: electro pillar i  2_0
+      name: electro bots wing change1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 38
-        height: 85
+        width: 90
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e5832ce39441f7670800000000000000
-      internalID: 8538565723335833694
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: electro pillar i  2_1
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 0
-        width: 35
-        height: 85
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 917608534031a55b0800000000000000
-      internalID: -5378965896142231783
+      spriteID: 3384eb9052ab9ec60800000000000000
+      internalID: 7848008493909821491
       vertices: []
       indices: 
       edges: []
@@ -176,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a1ad06b8301f27b4e952f703ec0acc64
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      electro pillar i  2_0: 8538565723335833694
-      electro pillar i  2_1: -5378965896142231783
+      electro bots wing change1_0: 7848008493909821491
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
