@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MovingProjectile : MonoBehaviour
 {
-    // this is basically copy paste of the platform script so idk maybe it should just be one script but im making it 2 so we can edit easier
     [SerializeField] private float speed; 
     [SerializeField] private Transform pointA;
     [SerializeField] private Transform pointB;
@@ -18,9 +17,18 @@ public class MovingProjectile : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, nextPosition, speed * Time.deltaTime);
 
-        if (transform.position == nextPosition)
-            {
-                nextPosition = (nextPosition == pointA.position) ? pointB.position : pointA.position;
-            }
+        if (Vector3.Distance(transform.position, nextPosition) < 0.01f)
+        {
+            transform.position = nextPosition;
+
+                if (Vector3.Distance(nextPosition, pointA.position) < 0.01f)
+                {
+                    nextPosition = pointB.position;
+                }
+                else
+                {
+                    nextPosition = pointA.position;
+                }
+        }
     }
 }
