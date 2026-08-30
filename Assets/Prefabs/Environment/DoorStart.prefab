@@ -117,7 +117,7 @@ Transform:
   m_GameObject: {fileID: 3370146973265224548}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.08, z: 0}
+  m_LocalPosition: {x: 1.34, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443043267ec043047a87fd99b5a8feff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomSpawnPoint
-  spawnID: Bottom
+  spawnID: Door
 --- !u!1 &6897098234001924010
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,10 +145,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6260386559833037935}
-  - component: {fileID: 7574550004848301425}
   - component: {fileID: 212035284264253433}
   m_Layer: 0
-  m_Name: Door
+  m_Name: DoorStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,20 +170,6 @@ Transform:
   - {fileID: 7981848510451565624}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7574550004848301425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6897098234001924010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b024514e22c3dbd479851ce16553c0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoomExit
-  targetScene: 
-  targetSpawnID: Top
 --- !u!61 &212035284264253433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -202,7 +187,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 1
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -215,7 +200,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
