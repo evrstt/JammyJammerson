@@ -4,9 +4,19 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     private void Update()
     {
+        if(rb.linearVelocity.x > 0.1f)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if(rb.linearVelocity.x < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        
         float speed = Mathf.Abs(rb.linearVelocity.x);
         float verticalSpeed = Mathf.Abs(rb.linearVelocity.y);
 
