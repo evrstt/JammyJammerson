@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
   animator: {fileID: 6676391206997100351}
   rb: {fileID: 106327142551099218}
-  playerController: {fileID: 2713043834513964575}
+  spriteRenderer: {fileID: 5300260308915534139}
 --- !u!50 &106327142551099218
 Rigidbody2D:
   serializedVersion: 5
