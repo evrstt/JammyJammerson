@@ -1646,6 +1646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorStart
       objectReference: {fileID: 0}
+    - target: {fileID: 8559828508106550066, guid: b4453ae019dc9e649a1fe3d683a90baf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.613
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
