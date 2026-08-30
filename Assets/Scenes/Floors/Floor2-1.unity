@@ -721,7 +721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5288616465421186056, guid: 2f71e41d7815bf846a1e48e6f37a98b8, type: 3}
       propertyPath: m_Name
-      value: 3TilePlatform (2)
+      value: MOVING PLATFORM
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3011,7 +3011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1965496057}
   m_Layer: 0
-  m_Name: waypoints
+  m_Name: moving platform waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
