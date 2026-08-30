@@ -31,6 +31,8 @@ private bool isGrounded;
 private float coyoteTimeCounter;
 private float jumpBufferCounter;
 
+public bool IsGrounded => isGrounded;
+
     private void Awake()
     {
         rocketBoostSource.clip = rocketBoostSound;
