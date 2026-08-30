@@ -53,11 +53,11 @@ public class EndCutscene : MonoBehaviour
             deathCount = GameManager.Instance.TotalDeaths;
         }
 
-        int testBotNumber =1 + deathCount;
+        int testBotNumber = 1 + deathCount;
         string testBotID = testBotNumber.ToString("000");
 
         string dialogue = "Congratulations TestBot" + testBotID + ", you've completed the test.... \n\n"
-                            + "Please enjoy whatever it is a robot would do for the remainder for you life... \n\n"
+                            + "Please enjoy whatever it is a robot would do for the remainder for your life... \n\n"
                             + "Oh! \n\n"
                             + "One last thing... \n\n"
                             + "Happy Testing!";
@@ -71,6 +71,11 @@ public class EndCutscene : MonoBehaviour
         yield return WalkPlayerOffScreen();
 
         CutToBlack();
+
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.RegisterDeath();
+        }
 
         if(AudioManager.instance != null)
         {
@@ -116,7 +121,7 @@ public class EndCutscene : MonoBehaviour
 
     private IEnumerator WalkPlayerOffScreen()
     {
-        while(Vector2.Distance(playerRb.position, walkTarget.position) > 0.1f);
+        while(Vector2.Distance(playerRb.position, walkTarget.position) > 0.1f)
         {
             float direction = Mathf.Sign(walkTarget.position.x - playerRb.position.x);
             playerRb.linearVelocity = new Vector2(direction * walkSpeed, playerRb.linearVelocity.y);

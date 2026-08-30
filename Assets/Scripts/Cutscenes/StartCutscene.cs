@@ -37,8 +37,18 @@ public class StartCutscene : MonoBehaviour
 
         dialoguePanel.SetActive(true);
 
+        int deathCount = 0;
+
+        if(GameManager.Instance != null)
+        {
+            deathCount = GameManager.Instance.TotalDeaths;
+        }
+
+        int testBotNumber = 1 + deathCount;
+        string testBotID = testBotNumber.ToString("000");
+
         yield return TypeDialogue(
-            "Rise and Shine, Testbot001. \n\n"
+            "Rise and Shine, Testbot" + testBotID + ". \n\n"
             + "It's time to start testing. Your Objective is to make it to the laboratory exit as quickly as possible... \n\n"
             + "Now get on with it... \n\n"
             + "Oh! \n\n"
