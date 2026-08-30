@@ -4,6 +4,7 @@ public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject howToPlayPanel;
 
     public void PlayGame()
     {
@@ -20,6 +21,12 @@ public class MainMenuUI : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         settingsPanel.SetActive(true);
+    }
+
+    public void OpenHowToPlay()
+    {
+        mainMenuPanel.SetActive(false);
+        howToPlayPanel.SetActive(true);
     }
 
     public void QuitGame()
