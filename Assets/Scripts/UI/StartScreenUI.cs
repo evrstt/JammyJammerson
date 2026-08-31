@@ -48,4 +48,37 @@ public class StartScreenUI : MonoBehaviour
     {
         buttonPressListener?.Dispose();
     }
+    public void ShowStartScreen()
+{
+    startScreenPanel.SetActive(true);
+    mainMenuPanel.SetActive(false);
+
+    if(AudioManager.instance != null)
+    {
+        AudioManager.instance.PlayMusic(menuMusic);
+    }
+
+    waitingForInput = true;
+
+    buttonPressListener?.Dispose();
+
+    buttonPressListener = InputSystem.onAnyButtonPress.CallOnce(
+        control => ContinueToMainMenu()
+    );
+}
+public void ShowMainMenu()
+{
+    waitingForInput = false;
+
+    startScreenPanel.SetActive(false);
+    mainMenuPanel.SetActive(true);
+
+    buttonPressListener?.Dispose();
+    buttonPressListener = null;
+
+    if(AudioManager.instance != null)
+    {
+        AudioManager.instance.PlayMusic(menuMusic);
+    }
+}
 }
