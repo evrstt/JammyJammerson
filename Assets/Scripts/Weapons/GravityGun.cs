@@ -50,4 +50,18 @@ public class GravityGun : MonoBehaviour
 
         activeProjectile = null;
     }
+
+    private void OnCancelBlackHole(InputValue value)
+    {
+        if(!value.isPressed)
+        {
+            return;
+        }
+
+        if(activeBlackHole != null)
+        {
+            Destroy(activeBlackHole);
+            activeBlackHole = null;
+        }
+    }
 }
