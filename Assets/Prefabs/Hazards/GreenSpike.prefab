@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4861519736971444871}
   - component: {fileID: 3369521185145951556}
-  - component: {fileID: 2953452965827151281}
   - component: {fileID: 3532346739074213109}
+  - component: {fileID: 5322693939017919408}
   m_Layer: 0
   m_Name: GreenSpike
   m_TagString: Untagged
@@ -93,8 +93,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &2953452965827151281
-BoxCollider2D:
+--- !u!114 &3532346739074213109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170956384637146427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a584be799d6a24db35276a056caa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hazard
+--- !u!60 &5322693939017919408
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,17 +149,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.64, y: 0.5}
-  m_EdgeRadius: 0
---- !u!114 &3532346739074213109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170956384637146427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a584be799d6a24db35276a056caa67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hazard
+  m_Points:
+    m_Paths:
+    - - {x: 0.12, y: 0.11}
+      - {x: 0.01, y: 0.25}
+      - {x: -0.03, y: 0.25}
+      - {x: -0.07, y: 0.21}
+      - {x: -0.17999999, y: 0.02}
+      - {x: -0.32, y: -0.19}
+      - {x: -0.32, y: -0.25}
+      - {x: 0.32, y: -0.25}
+      - {x: 0.32, y: -0.19}
+      - {x: 0.26999998, y: -0.11}
+  m_UseDelaunayMesh: 1
